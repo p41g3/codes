@@ -1,0 +1,145 @@
+using System;
+using System.Collections.Generic;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Initialize game variables
+            int day = 1;
+            int currency = 0;
+            List<Employee> employees = new List<Employee>();
+            List<MenuItem> menuItems = new List<MenuItem>();
+            List<Equipment> equipment = new List<Equipment>();
+            List<Promotion> promotions = new List<Promotion>();
+
+            // Game loop
+            while (day <= 7)
+            {
+                Console.WriteLine("Day " + day);
+
+                // Hire staff
+                Console.WriteLine("Hire staff");
+                Console.WriteLine("As the manager, you have the ability to hire staff for your coffee shop.");
+                Console.WriteLine("What position would you like to hire for? (Barista, Cashier, Manager)");
+                string position = Console.ReadLine();
+                Console.WriteLine("What salary would you like to offer? (Enter a number)");
+                int salary = Convert.ToInt32(Console.ReadLine());
+                employees.Add(new Employee(position, salary));
+
+                // Set prices for menu items
+                Console.WriteLine("Set prices for menu items");
+                Console.WriteLine("As the manager, you have the ability to set prices for your coffee shop's menu items.");
+                Console.WriteLine("What item would you like to set a price for?");
+                string itemName = Console.ReadLine();
+                Console.WriteLine("What price would you like to set for " + itemName + "? (Enter a number)");
+                double itemPrice = Convert.ToDouble(Console.ReadLine());
+                menuItems.Add(new MenuItem(itemName, itemPrice));
+
+                // Purchase inventory
+                Console.WriteLine("Purchase inventory");
+
+                // Open the coffee shop
+                Console.WriteLine("Open the coffee shop");
+
+                // Simulate sales for the day
+                Console.WriteLine("Simulate sales for the day");
+                double sales = 0;
+                foreach (MenuItem item in menuItems)
+                {
+                    sales += item.Price * 10;
+                }
+                currency += (int)sales;
+
+                // End of day summary
+                Console.WriteLine("End of day summary");
+                Console.WriteLine("Sales: $" + sales);
+                Console.WriteLine("Currency: $" + currency);
+
+                // Analyze sales data
+                Console.WriteLine("Analyze sales data");
+
+                // Offer discounts and promotions to customers
+                Console.WriteLine("Offer discounts and promotions to customers");
+
+                // Simulate sales for the day
+                Console.WriteLine("Simulate sales for the day");
+                sales = 0;
+                foreach (MenuItem item in menuItems)
+                {
+                    sales += item.Price * 10;
+                }
+                currency += (int)sales;
+
+                // End of day summary
+                Console.WriteLine("End of day summary");
+                Console.WriteLine("Sales: $" + sales);
+                Console.WriteLine("Currency: $" + currency);
+
+                if (day == 7)
+                    break;
+
+                day++;
+            }
+
+            // Evaluate the shop's performance
+            Console.WriteLine("Evaluate the shop's performance");
+
+            // End of game summary
+            Console.WriteLine("End of game summary");
+
+            // Feedback and suggestions
+            Console.WriteLine("Feedback and suggestions");
+
+            // End of game options (restart or exit)
+            Console.WriteLine("End of game options (restart or exit)");
+        }
+    }
+
+    class Employee
+    {
+        public string Position { get; set; }
+        public int Salary { get; set; }
+
+        public Employee(string position, int salary)
+        {
+            Position = position;
+            Salary = salary;
+        }
+    }
+
+    class MenuItem
+    {
+        public string Name { get; set; }
+        public double Price { get; set; }
+
+        public MenuItem(string name, double price)
+        {
+            Name = name;
+            Price = price;
+        }
+    }
+
+    class Equipment
+    {
+        public string Name { get; set; }
+        public double Price { get; set; }
+
+        public Equipment(string name, double price)
+        {
+            Name = name;
+            Price = price;
+        }
+    }
+
+    class Promotion
+    {
+        public string Name { get; set; }
+        public double Discount { get; set; }
+
+        public Promotion(string name, double discount)
+        {
+            Name = name;
+            Discount = discount;
+        }
+    }
